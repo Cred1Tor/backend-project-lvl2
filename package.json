@@ -1,0 +1,54 @@
+{
+  "name": "difference-calculator",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "gendiff": "dist/bin/gendiff.js"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cred1Tor/backend-project-lvl2.git"
+  },
+  "author": "Saitgalin Aleksandr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cred1Tor/backend-project-lvl2/issues"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "homepage": "https://github.com/Cred1Tor/backend-project-lvl2#readme",
+  "dependencies": {
+    "commander": "^4.0.1",
+    "lodash": "^4.17.14"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.7.5",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
+    "babel-jest": "^24.9.0",
+    "debug": "^4.1.1",
+    "eslint-plugin-jest": "^23.0.4",
+    "jest": "^24.9.0",
+    "jest-cli": "^24.9.0"
+  }
+}

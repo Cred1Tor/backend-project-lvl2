@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import gendiff from '..';
+import { commander } from '..';
 
-gendiff();
+commander();

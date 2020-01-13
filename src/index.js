@@ -3,14 +3,14 @@ import _ from 'lodash';
 
 const getDiffByKey = (json1, json2, key) => {
   if (json1[key] === json2[key]) {
-    return `    "${key}": ${json2[key]}\n`;
+    return `    ${key}: ${json2[key]}\n`;
   }
   let result = '';
   if (_.has(json1, key)) {
-    result += `  - "${key}": ${json1[key]}\n`;
+    result += `  - ${key}: ${json1[key]}\n`;
   }
   if (_.has(json2, key)) {
-    result += `  + "${key}": ${json2[key]}\n`;
+    result += `  + ${key}: ${json2[key]}\n`;
   }
   return result;
 };

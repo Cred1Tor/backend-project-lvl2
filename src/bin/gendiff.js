@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import { commander } from '..';
+import commander from '../commander';
 
 commander();

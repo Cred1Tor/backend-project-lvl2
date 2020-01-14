@@ -1,26 +1,24 @@
-import * as fs from 'fs';
 import _ from 'lodash';
+import parse from './parsers';
 
-const getDiffByKey = (json1, json2, key) => {
-  if (json1[key] === json2[key]) {
-    return `    ${key}: ${json2[key]}\n`;
+const getDiffByKey = (data1, data2, key) => {
+  if (data1[key] === data2[key]) {
+    return `    ${key}: ${data2[key]}\n`;
   }
   let result = '';
-  if (_.has(json1, key)) {
-    result += `  - ${key}: ${json1[key]}\n`;
+  if (_.has(data1, key)) {
+    result += `  - ${key}: ${data1[key]}\n`;
   }
-  if (_.has(json2, key)) {
-    result += `  + ${key}: ${json2[key]}\n`;
+  if (_.has(data2, key)) {
+    result += `  + ${key}: ${data2[key]}\n`;
   }
   return result;
 };
 
 export default (filepath1, filepath2) => {
-  const data1 = fs.readFileSync(filepath1, 'utf-8');
-  const data2 = fs.readFileSync(filepath2, 'utf-8');
-  const json1 = JSON.parse(data1);
-  const json2 = JSON.parse(data2);
-  const keys = _.union(Object.keys(json1), Object.keys(json2));
-  const diffs = keys.map((key) => getDiffByKey(json1, json2, key));
+  const data1 = parse(filepath1);
+  const data2 = parse(filepath2);
+  const keys = _.union(Object.keys(data1), Object.keys(data2));
+  const diffs = keys.map((key) => getDiffByKey(data1, data2, key));
   return `{\n${diffs.join('')}}`;
 };

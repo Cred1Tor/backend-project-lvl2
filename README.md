@@ -12,3 +12,5 @@ A tool for comparing configuration files
 Clone the repository, run `npm link` from inside the repository.
 
 Use `gendiff -h` for help.
+
+[![asciicast](https://asciinema.org/a/VZUtaDuNwJCsE39cDiaVrwdLv.svg)](https://asciinema.org/a/VZUtaDuNwJCsE39cDiaVrwdLv)

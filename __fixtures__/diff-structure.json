@@ -27,5 +27,6 @@
       "key": "verbose",
       "value": true
     }
-  ]
+  ],
+  "children": []
 }

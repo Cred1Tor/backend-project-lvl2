@@ -1,0 +1,114 @@
+{
+  "unchanged": [],
+  "changed": [],
+  "added": [
+    {
+      "key": "group3",
+      "value": {
+        "fee": 100500
+      }
+    }
+  ],
+  "deleted": [
+    {
+      "key": "group2",
+      "value": {
+        "abc": 12345
+      }
+    }
+  ],
+  "children": [
+    {
+      "key": "common",
+      "value": {
+        "unchanged": [
+          {
+            "key": "setting1",
+            "value": "Value 1"
+          }
+        ],
+        "changed": [
+          {
+            "key": "setting3",
+            "oldValue": true,
+            "newValue": {
+              "key": "value"
+            }
+          }
+        ],
+        "added": [
+          {
+            "key": "follow",
+            "value": false
+          },
+          {
+            "key": "setting4",
+            "value": "blah blah"
+          },
+          {
+            "key": "setting5",
+            "value": {
+              "key5": "value5"
+            }
+          }
+        ],
+        "deleted": [
+          {
+            "key": "setting2",
+            "value": 200
+          }
+        ],
+        "children": [
+          {
+            "key": "setting6",
+            "value": {
+              "unchanged": [
+                {
+                  "key": "key",
+                  "value": "value"
+                }
+              ],
+              "changed": [],
+              "added": [
+                {
+                  "key": "ops",
+                  "value": "vops"
+                }
+              ],
+              "deleted": [],
+              "children": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "key": "group1",
+      "value": {
+        "unchanged": [
+          {
+            "key": "foo",
+            "value": "bar"
+          }
+        ],
+        "changed": [
+          {
+            "key": "baz",
+            "oldValue": "bas",
+            "newValue": "bars"
+          },
+          {
+            "key": "nest",
+            "oldValue": {
+              "key": "value"
+            },
+            "newValue": "str"
+          }
+        ],
+        "added": [],
+        "deleted": [],
+        "children": []
+      }
+    }
+  ]
+}

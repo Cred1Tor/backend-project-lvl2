@@ -10,9 +10,9 @@ const cleanStringify = (data, indentSize = 4) => {
 
   const indent = ' '.repeat(indentSize);
   const higherIndent = ' '.repeat(indentSize - 4);
-  const entriesString = Object.entries(data).reduce((acc, [key, value]) => [...acc, `${indent}${key}: ${value}`], [])
-    .join('\n');
-  return `{\n${entriesString}\n${higherIndent}}`;
+  const entriesString = Object.entries(data).reduce((acc, [key, value]) => [...acc, `${key}: ${value}`], [])
+    .join(`\n${indent}`);
+  return `{\n${indent}${entriesString}\n${higherIndent}}`;
 };
 
 const getDiff = (data1, data2, indentSize = 4) => {

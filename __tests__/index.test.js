@@ -1,5 +1,5 @@
 import fs from 'fs';
-import genDiff from '../src';
+import genDiff, { getDiffData } from '../src';
 
 const getFixturePath = (fixtureName) => `${__dirname}/../__fixtures__/${fixtureName}`;
 
@@ -30,5 +30,17 @@ describe('gendiff nested', () => {
     const afterPath = getFixturePath(afterFileName);
     const diff = genDiff(beforePath, afterPath);
     expect(diff).toEqual(expected);
+  });
+});
+
+describe('giff data', () => {
+  test('flat', () => {
+    const beforePath = getFixturePath('before.json');
+    const afterPath = getFixturePath('after.json');
+    const data1 = JSON.parse(fs.readFileSync(beforePath));
+    const data2 = JSON.parse(fs.readFileSync(afterPath));
+    const diffData = getDiffData(data1, data2);
+    const expected = JSON.parse(fs.readFileSync(getFixturePath('diff-structure.json')));
+    expect(diffData).toEqual(expected);
   });
 });

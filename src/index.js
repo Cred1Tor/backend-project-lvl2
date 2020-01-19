@@ -47,6 +47,51 @@ const getDiff = (data1, data2, indentSize = 4) => {
   return `{\n${diffs.join('')}${higherIndent}}`;
 };
 
+export const getDiffData = (data1, data2) => {
+  const keys = _.union(Object.keys(data1), Object.keys(data2));
+  const result = {
+    unchanged: [],
+    changed: [],
+    added: [],
+    deleted: [],
+  };
+
+  keys.forEach((key) => {
+    if (_.has(data1, key) && !_.has(data2, key)) {
+      result.deleted.push({
+        key,
+        value: data1[key],
+      });
+      return;
+    }
+
+    if (!_.has(data1, key) && _.has(data2, key)) {
+      result.added.push({
+        key,
+        value: data2[key],
+      });
+      return;
+    }
+
+
+    if (data1[key] === data2[key]) {
+      result.unchanged.push({
+        key,
+        value: data2[key],
+      });
+      return;
+    }
+
+    result.changed.push({
+      key,
+      oldValue: data1[key],
+      newValue: data2[key],
+    });
+  });
+
+  return result;
+};
+
 export default (filepath1, filepath2) => {
   const data1 = parse(filepath1);
   const data2 = parse(filepath2);

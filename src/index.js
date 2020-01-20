@@ -142,13 +142,9 @@ export const getOrderedDiff = (data1, data2) => {
 
     result.push({
       key,
-      status: 'deleted',
-      value: value1,
-    });
-    result.push({
-      key,
-      status: 'added',
-      value: value2,
+      status: 'changed',
+      oldValue: value1,
+      newValue: value2,
     });
   });
 
@@ -181,7 +177,13 @@ export const stringifyOrderedDiff = (diff, depthLevel = 1) => {
     return `{\n${lines.join('\n')}\n${normalIndent}}`;
   };
 
-  const renderLine = ({ key, status, value }) => {
+  const renderLine = ({
+    key, status, value, oldValue, newValue,
+  }) => {
+    if (status === 'changed') {
+      return `${minusIndent}${key}: ${stringifyValue(oldValue)}\n${plusIndent}${key}: ${stringifyValue(newValue)}`;
+    }
+
     const valueOutput = status === 'nestedDiff' ? stringifyOrderedDiff(value, depthLevel + 1) : stringifyValue(value);
     return `${indent[status]}${key}: ${stringifyValue(valueOutput)}`;
   };

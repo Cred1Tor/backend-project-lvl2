@@ -53,5 +53,5 @@ describe('diff data', () => {
 // const afterPath = getFixturePath('after-nested.json');
 // const data1 = JSON.parse(fs.readFileSync(beforePath), 'utf-8');
 // const data2 = JSON.parse(fs.readFileSync(afterPath), 'utf-8');
-// const diffStructure = getOrderedDiffData(data1, data2);
+// const diffStructure = getOrderedDiff(data1, data2);
 // console.log(JSON.stringify(diffStructure, null, 2));

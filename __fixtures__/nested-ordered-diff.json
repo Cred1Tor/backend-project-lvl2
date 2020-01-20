@@ -15,13 +15,9 @@
       },
       {
         "key": "setting3",
-        "status": "deleted",
-        "value": true
-      },
-      {
-        "key": "setting3",
-        "status": "added",
-        "value": {
+        "status": "changed",
+        "oldValue": true,
+        "newValue": {
           "key": "value"
         }
       },
@@ -66,13 +62,9 @@
     "value": [
       {
         "key": "baz",
-        "status": "deleted",
-        "value": "bas"
-      },
-      {
-        "key": "baz",
-        "status": "added",
-        "value": "bars"
+        "status": "changed",
+        "oldValue": "bas",
+        "newValue": "bars"
       },
       {
         "key": "foo",
@@ -81,15 +73,11 @@
       },
       {
         "key": "nest",
-        "status": "deleted",
-        "value": {
+        "status": "changed",
+        "oldValue": {
           "key": "value"
-        }
-      },
-      {
-        "key": "nest",
-        "status": "added",
-        "value": "str"
+        },
+        "newValue": "str"
       }
     ]
   },

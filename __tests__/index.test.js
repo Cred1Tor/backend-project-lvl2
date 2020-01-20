@@ -1,5 +1,5 @@
 import fs from 'fs';
-import genDiff, { getOrderedDiff, getGroupedDiff } from '../src';
+import genDiff, { getOrderedDiff } from '../src';
 
 const getFixturePath = (fixtureName) => `${__dirname}/../__fixtures__/${fixtureName}`;
 
@@ -35,7 +35,6 @@ describe('gendiff nested', () => {
 
 describe('diff data', () => {
   test.each([
-    ['grouped', getGroupedDiff, 'before-nested.json', 'after-nested.json', 'nested-grouped-diff.json'],
     ['ordered', getOrderedDiff, 'before-nested.json', 'after-nested.json', 'nested-ordered-diff.json'],
   ])('%s', (_testName, getDiffData, beforeFileName, afterFileName, expectedFileName) => {
     const beforePath = getFixturePath(beforeFileName);

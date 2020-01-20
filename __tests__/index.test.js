@@ -1,5 +1,5 @@
 import fs from 'fs';
-import genDiff, { getDiffData } from '../src';
+import genDiff, { getOrderedDiff, getGroupedDiff } from '../src';
 
 const getFixturePath = (fixtureName) => `${__dirname}/../__fixtures__/${fixtureName}`;
 
@@ -35,21 +35,23 @@ describe('gendiff nested', () => {
 
 describe('diff data', () => {
   test.each([
-    ['flat', 'before.json', 'after.json', 'diff-structure.json'],
-    ['nested', 'before-nested.json', 'after-nested.json', 'nested-diff-structure.json'],
-  ])('%s', (_testName, beforeFileName, afterFileName, expectedFileName) => {
+    ['grouped', getGroupedDiff, 'before-nested.json', 'after-nested.json', 'nested-grouped-diff.json'],
+    ['ordered', getOrderedDiff, 'before-nested.json', 'after-nested.json', 'nested-ordered-diff.json'],
+  ])('%s', (_testName, getDiffData, beforeFileName, afterFileName, expectedFileName) => {
     const beforePath = getFixturePath(beforeFileName);
     const afterPath = getFixturePath(afterFileName);
+    const expectedPath = getFixturePath(expectedFileName);
     const data1 = JSON.parse(fs.readFileSync(beforePath), 'utf-8');
     const data2 = JSON.parse(fs.readFileSync(afterPath), 'utf-8');
-    const diffData = getDiffData(data1, data2);
-    const expectedPath = getFixturePath(expectedFileName);
     const expected = JSON.parse(fs.readFileSync(expectedPath, 'utf-8'));
+    const diffData = getDiffData(data1, data2);
     expect(diffData).toEqual(expected);
   });
 });
 
-const beforePath = getFixturePath('before-nested.json');
-const afterPath = getFixturePath('after-nested.json');
-const diff = genDiff(beforePath, afterPath);
-console.log(diff);
+// const beforePath = getFixturePath('before-nested.json');
+// const afterPath = getFixturePath('after-nested.json');
+// const data1 = JSON.parse(fs.readFileSync(beforePath), 'utf-8');
+// const data2 = JSON.parse(fs.readFileSync(afterPath), 'utf-8');
+// const diffStructure = getOrderedDiffData(data1, data2);
+// console.log(JSON.stringify(diffStructure, null, 2));

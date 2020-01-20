@@ -1,0 +1,110 @@
+[
+  {
+    "key": "common",
+    "status": "nestedDiff",
+    "value": [
+      {
+        "key": "setting1",
+        "status": "unchanged",
+        "value": "Value 1"
+      },
+      {
+        "key": "setting2",
+        "status": "deleted",
+        "value": 200
+      },
+      {
+        "key": "setting3",
+        "status": "deleted",
+        "value": true
+      },
+      {
+        "key": "setting3",
+        "status": "added",
+        "value": {
+          "key": "value"
+        }
+      },
+      {
+        "key": "setting6",
+        "status": "nestedDiff",
+        "value": [
+          {
+            "key": "key",
+            "status": "unchanged",
+            "value": "value"
+          },
+          {
+            "key": "ops",
+            "status": "added",
+            "value": "vops"
+          }
+        ]
+      },
+      {
+        "key": "follow",
+        "status": "added",
+        "value": false
+      },
+      {
+        "key": "setting4",
+        "status": "added",
+        "value": "blah blah"
+      },
+      {
+        "key": "setting5",
+        "status": "added",
+        "value": {
+          "key5": "value5"
+        }
+      }
+    ]
+  },
+  {
+    "key": "group1",
+    "status": "nestedDiff",
+    "value": [
+      {
+        "key": "baz",
+        "status": "deleted",
+        "value": "bas"
+      },
+      {
+        "key": "baz",
+        "status": "added",
+        "value": "bars"
+      },
+      {
+        "key": "foo",
+        "status": "unchanged",
+        "value": "bar"
+      },
+      {
+        "key": "nest",
+        "status": "deleted",
+        "value": {
+          "key": "value"
+        }
+      },
+      {
+        "key": "nest",
+        "status": "added",
+        "value": "str"
+      }
+    ]
+  },
+  {
+    "key": "group2",
+    "status": "deleted",
+    "value": {
+      "abc": 12345
+    }
+  },
+  {
+    "key": "group3",
+    "status": "added",
+    "value": {
+      "fee": 100500
+    }
+  }
+]

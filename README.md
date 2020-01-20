@@ -14,3 +14,5 @@ Clone the repository, run `npm link` from inside the repository.
 Use `gendiff -h` for help.
 
 [![asciicast](https://asciinema.org/a/SXtRQVxdN3kFYPUM6LmwIfHzV.svg)](https://asciinema.org/a/SXtRQVxdN3kFYPUM6LmwIfHzV)
+
+[![asciicast](https://asciinema.org/a/sFZhNyLRESZwLrADUhT4dTdUx.svg)](https://asciinema.org/a/sFZhNyLRESZwLrADUhT4dTdUx)

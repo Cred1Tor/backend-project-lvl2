@@ -59,7 +59,7 @@ export const getDiff = (data1, data2) => {
   return result;
 };
 
-export default (filepath1, filepath2, format) => {
+export default (filepath1, filepath2, format = 'tree') => {
   const data1 = parse(filepath1);
   const data2 = parse(filepath2);
   const diff = getDiff(data1, data2);

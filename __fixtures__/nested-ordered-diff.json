@@ -10,12 +10,12 @@
       },
       {
         "key": "setting2",
-        "status": "deleted",
+        "status": "removed",
         "value": 200
       },
       {
         "key": "setting3",
-        "status": "changed",
+        "status": "updated",
         "oldValue": true,
         "newValue": {
           "key": "value"
@@ -62,7 +62,7 @@
     "value": [
       {
         "key": "baz",
-        "status": "changed",
+        "status": "updated",
         "oldValue": "bas",
         "newValue": "bars"
       },
@@ -73,7 +73,7 @@
       },
       {
         "key": "nest",
-        "status": "changed",
+        "status": "updated",
         "oldValue": {
           "key": "value"
         },
@@ -83,7 +83,7 @@
   },
   {
     "key": "group2",
-    "status": "deleted",
+    "status": "removed",
     "value": {
       "abc": 12345
     }

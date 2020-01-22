@@ -1,12 +1,14 @@
 import _ from 'lodash';
 import treeStringify from './formatters/tree';
 import plainStringify from './formatters/plain';
+import jsonStringify from './formatters/json';
 import { isObject } from './utils';
 import parse from './parsers';
 
 const format = {
   tree: treeStringify,
   plain: plainStringify,
+  json: jsonStringify,
 };
 
 export const getDiff = (data1, data2) => {

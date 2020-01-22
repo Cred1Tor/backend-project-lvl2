@@ -1,7 +1,7 @@
 import path from 'path';
 import yaml from 'js-yaml';
 import fs from 'fs';
-import ini from 'ini';
+import ini from '../modules/ini';
 
 const mapping = {
   '.json': JSON.parse,

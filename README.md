@@ -13,4 +13,12 @@ Clone the repository, run `npm link` from inside the repository.
 
 Use `gendiff -h` for help.
 
-[![asciicast](https://asciinema.org/a/rlHPvky1LvD5py7DlaYUsZJn2.svg)](https://asciinema.org/a/rlHPvky1LvD5py7DlaYUsZJn2)
+## Examples
+
+### Flat, all file types
+
+[![asciicast](https://asciinema.org/a/n164Y7ntRuy8tcxYMH5M9xCIO.svg)](https://asciinema.org/a/n164Y7ntRuy8tcxYMH5M9xCIO)
+
+### Nested, all format modes
+
+[![asciicast](https://asciinema.org/a/EFGhzlfeq13nws37YMfdDQNcl.svg)](https://asciinema.org/a/EFGhzlfeq13nws37YMfdDQNcl)

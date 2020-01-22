@@ -39,8 +39,8 @@ describe('json', () => {
   test.each([
     ['json', 'before-nested.json', 'after-nested.json'],
     ['yaml', 'before-nested.yml', 'after-nested.yml'],
-    // eslint-disable-next-line max-len
-    // ['ini', 'before-nested.ini', 'after-nested.ini'], ini parser converts numbers into strings, so it doesn't work for json output format
+    // ini parser converts numbers into strings, so it doesn't work for json output format
+    // ['ini', 'before-nested.ini', 'after-nested.ini'],
   ])('%s', (_testName, beforeFileName, afterFileName) => {
     const beforePath = getFullPath(beforeFileName);
     const afterPath = getFullPath(afterFileName);

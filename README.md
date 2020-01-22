@@ -15,4 +15,4 @@ Use `gendiff -h` for help.
 
 [![asciicast](https://asciinema.org/a/SXtRQVxdN3kFYPUM6LmwIfHzV.svg)](https://asciinema.org/a/SXtRQVxdN3kFYPUM6LmwIfHzV)
 
-[![asciicast](https://asciinema.org/a/sFZhNyLRESZwLrADUhT4dTdUx.svg)](https://asciinema.org/a/sFZhNyLRESZwLrADUhT4dTdUx)
+[![asciicast](https://asciinema.org/a/ld0hagsPi7BZIEEdgyFQHxQ9t.svg)](https://asciinema.org/a/ld0hagsPi7BZIEEdgyFQHxQ9t)

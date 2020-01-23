@@ -24,6 +24,7 @@ describe.each([
     if (format === 'json' && testName === 'ini') {
       const expectedNoNumbers = fs.readFileSync(getFullPath('json-diff-no-numbers.json'), 'utf-8');
       expect(diff).toEqual(expectedNoNumbers);
+      return;
     }
 
     expect(diff).toEqual(expected);

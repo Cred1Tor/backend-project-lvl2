@@ -2,29 +2,25 @@ import _ from 'lodash';
 
 const tabSize = 4;
 
-class Indent {
-  constructor(depthLevel) {
-    const indentSize = depthLevel * tabSize;
-    this.normal = ' '.repeat(indentSize);
-    this.plus = ' '.repeat(indentSize - 2).concat('+ ');
-    this.minus = ' '.repeat(indentSize - 2).concat('- ');
-    this.higher = ' '.repeat(indentSize - tabSize);
-    this.lower = ' '.repeat(indentSize + tabSize);
-    this.byStatus = {
-      unchanged: this.normal,
-      added: this.plus,
-      removed: this.minus,
-      nestedDiff: this.normal,
-    };
-  }
-}
+const makeIndent = (depthLevel) => {
+  const indentSize = depthLevel * tabSize;
+  const indent = {
+    normal: ' '.repeat(indentSize),
+    plus: ' '.repeat(indentSize - 2).concat('+ '),
+    minus: ' '.repeat(indentSize - 2).concat('- '),
+    higher: ' '.repeat(indentSize - tabSize),
+    lower: ' '.repeat(indentSize + tabSize),
+  };
+
+  return indent;
+};
 
 const stringifyValue = (data, depthLevel) => {
   if (!_.isObject(data)) {
     return data.toString();
   }
 
-  const indent = new Indent(depthLevel);
+  const indent = makeIndent(depthLevel);
   const lines = Object.entries(data)
     .reduce((acc, [key, value]) => [...acc, `${indent.normal}${key}: ${value}`], []);
 
@@ -33,7 +29,13 @@ const stringifyValue = (data, depthLevel) => {
 
 const stringify = (diff, depthLevel = 1) => {
   const lowerLevel = depthLevel + 1;
-  const indent = new Indent(depthLevel);
+  const indent = makeIndent(depthLevel);
+  const indentByStatus = {
+    unchanged: indent.normal,
+    added: indent.plus,
+    removed: indent.minus,
+    nestedDiff: indent.normal,
+  };
 
   const renderNode = ({
     key, status, value, oldValue, newValue,
@@ -43,7 +45,7 @@ const stringify = (diff, depthLevel = 1) => {
     }
 
     const valueOutput = status === 'nestedDiff' ? stringify(value, lowerLevel) : stringifyValue(value, lowerLevel);
-    return `${indent.byStatus[status]}${key}: ${stringifyValue(valueOutput, lowerLevel)}`;
+    return `${indentByStatus[status]}${key}: ${stringifyValue(valueOutput, lowerLevel)}`;
   };
 
   const lines = diff.map(renderNode);

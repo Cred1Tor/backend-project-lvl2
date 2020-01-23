@@ -23,8 +23,8 @@ const stringifyDiff = (diff, path = '') => {
     }
   };
 
-  const lines = diff.map(renderNode);
-  return `${lines.filter((line) => line).join('\n')}`;
+  const lines = diff.map(renderNode).filter((line) => line);
+  return `${lines.join('\n')}`;
 };
 
 export default stringifyDiff;

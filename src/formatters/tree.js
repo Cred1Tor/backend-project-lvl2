@@ -1,4 +1,4 @@
-import { isObject } from '../utils';
+import _ from 'lodash';
 
 const tabSize = 4;
 
@@ -20,7 +20,7 @@ class Indent {
 }
 
 const stringifyValue = (data, depthLevel) => {
-  if (!isObject(data)) {
+  if (!_.isObject(data)) {
     return data.toString();
   }
 

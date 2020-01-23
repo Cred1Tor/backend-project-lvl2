@@ -1,6 +1,6 @@
-import { isObject } from '../utils';
+import _ from 'lodash';
 
-const stringifyValue = (data) => (isObject(data) ? '[complex value]' : data.toString());
+const stringifyValue = (data) => (_.isObject(data) ? '[complex value]' : data.toString());
 
 const stringifyDiff = (diff, path = '') => {
   const renderNode = ({

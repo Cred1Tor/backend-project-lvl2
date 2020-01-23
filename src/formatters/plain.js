@@ -11,7 +11,7 @@ const stringifyDiff = (diff, path = '') => {
       case 'updated':
         return `Property '${pathToKey}' was updated. From ${stringifyValue(oldValue)} to ${stringifyValue(newValue)}`;
       case 'unchanged':
-        return `Property '${pathToKey}' was not changed. Value: ${stringifyValue(value)}`;
+        return '';
       case 'added':
         return `Property '${pathToKey}' was added with value: ${stringifyValue(value)}`;
       case 'removed':
@@ -24,7 +24,7 @@ const stringifyDiff = (diff, path = '') => {
   };
 
   const lines = diff.map(renderNode);
-  return `${lines.join('\n')}`;
+  return `${lines.filter((line) => line).join('\n')}`;
 };
 
 export default stringifyDiff;

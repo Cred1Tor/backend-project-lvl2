@@ -8,7 +8,7 @@ describe.each([
   ['plain', 'plain-diff.txt'],
   ['json', 'json-diff.json'],
 ])('%s', (format, expectedFileName) => {
-  const expected = fs.readFileSync(getFullPath(expectedFileName), 'utf-8');
+  let expected = fs.readFileSync(getFullPath(expectedFileName), 'utf-8');
 
   test.each([
     ['json', 'before.json', 'after.json'],
@@ -22,9 +22,7 @@ describe.each([
     // ini parser converts numbers to strings
     // so the expected result for json format on ini files will be different
     if (format === 'json' && testName === 'ini') {
-      const expectedNoNumbers = fs.readFileSync(getFullPath('json-diff-no-numbers.json'), 'utf-8');
-      expect(diff).toEqual(expectedNoNumbers);
-      return;
+      expected = fs.readFileSync(getFullPath('json-diff-no-numbers.json'), 'utf-8');
     }
 
     expect(diff).toEqual(expected);

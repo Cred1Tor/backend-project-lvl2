@@ -4,7 +4,7 @@ import plainStringify from './formatters/plain';
 import jsonStringify from './formatters/json';
 import parse from './parsers';
 
-const format = {
+const formatsMapping = {
   tree: treeStringify,
   plain: plainStringify,
   json: jsonStringify,
@@ -64,5 +64,12 @@ export default (filepath1, filepath2, formatType = 'tree') => {
   const data1 = parse(filepath1);
   const data2 = parse(filepath2);
   const diff = getDiff(data1, data2);
-  return format[formatType](diff);
+  const supportedFormats = Object.keys(formatsMapping);
+
+  if (!supportedFormats.includes(formatType)) {
+    return `Unknown format type: ${formatType}\nAcceptable formats are: ${supportedFormats.join(', ')}`;
+  }
+
+  const format = formatsMapping[formatType];
+  return format(diff);
 };

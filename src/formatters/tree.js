@@ -1,8 +1,7 @@
 import _ from 'lodash';
 
-const tabSize = 4;
-
 const makeIndent = (depthLevel) => {
+  const tabSize = 4;
   const indentSize = depthLevel * tabSize;
   const indent = {
     normal: ' '.repeat(indentSize),

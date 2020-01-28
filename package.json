@@ -1,7 +1,15 @@
 {
   "name": "difference-calculator",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.5",
+  "description": "Difference generator, hexlet javascript project 2",
+  "keywords": [
+    "difference",
+    "generator",
+    "calculator",
+    "hexlet",
+    "project",
+    "javascript"
+  ],
   "main": "dist/index.js",
   "bin": {
     "gendiff": "dist/bin/gendiff.js"

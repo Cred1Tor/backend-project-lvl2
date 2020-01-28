@@ -61,12 +61,6 @@ export const getDiff = (data1, data2) => {
 };
 
 export default (filepath1, filepath2, formatType = 'tree') => {
-  const supportedFormats = Object.keys(formatsMapping);
-
-  if (!supportedFormats.includes(formatType)) {
-    return `Unknown format type: ${formatType}\nAcceptable formats are: ${supportedFormats.join(', ')}`;
-  }
-
   const data1 = parse(filepath1);
   const data2 = parse(filepath2);
   const diff = getDiff(data1, data2);

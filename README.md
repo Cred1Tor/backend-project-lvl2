@@ -20,6 +20,7 @@ General use: `gendiff <file> <file>`
 Files must be of these extensions: .json, .ini, .yml.
 
 Use -f (--format) flag to choose output format: `gendiff -f plain <file> <file>`
+
 Possible formats are: tree (default), plain, json.
 
 ## Examples

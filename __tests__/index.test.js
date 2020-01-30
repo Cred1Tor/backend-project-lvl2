@@ -14,7 +14,7 @@ describe.each([
     ['json', 'before.json', 'after.json'],
     ['yaml', 'before.yml', 'after.yml'],
     ['ini', 'before.ini', 'after.ini'],
-  ])('%s', (testName, beforeFileName, afterFileName) => {
+  ])('%s', (_testName, beforeFileName, afterFileName) => {
     const beforePath = getFullPath(beforeFileName);
     const afterPath = getFullPath(afterFileName);
     const diff = genDiff(beforePath, afterPath, format);

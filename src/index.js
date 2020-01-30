@@ -1,14 +1,6 @@
 import _ from 'lodash';
-import treeStringify from './formatters/tree';
-import plainStringify from './formatters/plain';
-import jsonStringify from './formatters/json';
 import parse from './parse';
-
-const formatsMapping = {
-  tree: treeStringify,
-  plain: plainStringify,
-  json: jsonStringify,
-};
+import getFormatter from './formatters';
 
 export const getDiff = (data1, data2) => {
   const keys = _.union(Object.keys(data1), Object.keys(data2));
@@ -64,6 +56,6 @@ export default (filepath1, filepath2, formatType = 'tree') => {
   const data1 = parse(filepath1);
   const data2 = parse(filepath2);
   const diff = getDiff(data1, data2);
-  const format = formatsMapping[formatType];
+  const format = getFormatter(formatType);
   return format(diff);
 };

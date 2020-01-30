@@ -45,7 +45,7 @@ const stringifyDiff = (diff, depthLevel = 1) => {
       case 'nestedDiff':
         return `${indent.normal}${key}: ${stringifyDiff(value, lowerLevel)}`;
       default:
-        throw new Error(`Unknown status: ${status}`);
+        throw new Error(`Unknown diff node status: ${status}`);
     }
   };
 

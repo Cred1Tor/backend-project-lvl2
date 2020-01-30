@@ -2,7 +2,7 @@ import _ from 'lodash';
 import treeStringify from './formatters/tree';
 import plainStringify from './formatters/plain';
 import jsonStringify from './formatters/json';
-import parse from './parsers';
+import parse from './parse';
 
 const formatsMapping = {
   tree: treeStringify,

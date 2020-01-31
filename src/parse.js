@@ -22,8 +22,16 @@ const extensionsMapping = {
   '.ini': (text) => convertStringValuesToNumbers(ini.parse(text)),
 };
 
+const supportedExtensions = Object.keys(extensionsMapping);
+
 export default (filepath) => {
   const extension = path.extname(filepath);
+  const { base } = path.parse(filepath);
+
+  if (!supportedExtensions.includes(extension)) {
+    throw new Error(`${base} has unsupported file extension. Supported extensions are: ${supportedExtensions.join(', ')}.`);
+  }
+
   const parse = extensionsMapping[extension];
   const data = fs.readFileSync(filepath, 'utf-8');
   return parse(data);

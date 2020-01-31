@@ -6,6 +6,12 @@ program.version(version)
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format [type]', 'output format', 'tree')
   .arguments('<firstConfig> <secondConfig>')
-  .action((first, second) => console.log(genDiff(first, second, program.format)));
+  .action((first, second) => {
+    try {
+      console.log(genDiff(first, second, program.format));
+    } catch (e) {
+      console.log(e.message);
+    }
+  });
 
 export default () => program.parse(process.argv);

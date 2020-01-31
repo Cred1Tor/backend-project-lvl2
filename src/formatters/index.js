@@ -8,4 +8,12 @@ const formatsMapping = {
   json: jsonStringify,
 };
 
-export default (formatType) => formatsMapping[formatType];
+const supportedFormats = Object.keys(formatsMapping);
+
+export default (formatType) => {
+  if (!supportedFormats.includes(formatType)) {
+    throw new Error(`${formatType} is not a valid format type. Supported formats are: ${supportedFormats.join(', ')}.`);
+  }
+
+  return formatsMapping[formatType];
+};

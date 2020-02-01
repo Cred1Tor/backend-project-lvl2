@@ -31,7 +31,7 @@ const stringifyDiff = (diff, depthLevel = 1) => {
   const indent = makeIndent(depthLevel);
 
   const renderNode = ({
-    key, status, value, oldValue, newValue,
+    key, status, value, oldValue, newValue, children,
   }) => {
     switch (status) {
       case 'updated':
@@ -43,7 +43,7 @@ const stringifyDiff = (diff, depthLevel = 1) => {
       case 'unchanged':
         return `${indent.normal}${key}: ${stringifyValue(value, lowerLevel)}`;
       case 'nestedDiff':
-        return `${indent.normal}${key}: ${stringifyDiff(value, lowerLevel)}`;
+        return `${indent.normal}${key}: ${stringifyDiff(children, lowerLevel)}`;
       default:
         throw new Error(`Unknown diff node status: ${status}`);
     }

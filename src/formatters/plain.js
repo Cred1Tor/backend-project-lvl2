@@ -4,7 +4,7 @@ const stringifyValue = (data) => (_.isObject(data) ? '[complex value]' : data.to
 
 const stringifyDiff = (diff, path = '') => {
   const renderNode = ({
-    key, status, value, oldValue, newValue,
+    key, status, value, oldValue, newValue, children,
   }) => {
     const pathToKey = `${path}${key}`;
     switch (status) {
@@ -17,7 +17,7 @@ const stringifyDiff = (diff, path = '') => {
       case 'removed':
         return `Property '${pathToKey}' was removed.`;
       case 'nestedDiff':
-        return stringifyDiff(value, `${pathToKey}.`);
+        return stringifyDiff(children, `${pathToKey}.`);
       default:
         throw new Error(`Unexpected status: ${status}`);
     }

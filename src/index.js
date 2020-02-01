@@ -39,7 +39,7 @@ export const getDiff = (data1, data2) => {
       return {
         key,
         status: 'nestedDiff',
-        value: getDiff(value1, value2),
+        children: getDiff(value1, value2),
       };
     }
 

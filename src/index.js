@@ -1,4 +1,6 @@
 import _ from 'lodash';
+import fs from 'fs';
+import path from 'path';
 import parse from './parse';
 import getFormatter from './formatters';
 
@@ -53,9 +55,16 @@ export const getDiff = (data1, data2) => {
 };
 
 export default (filepath1, filepath2, formatType = 'tree') => {
-  const data1 = parse(filepath1);
-  const data2 = parse(filepath2);
-  const diff = getDiff(data1, data2);
+  const data1 = fs.readFileSync(filepath1, 'utf-8');
+  const data2 = fs.readFileSync(filepath2, 'utf-8');
+
+  const ext1 = path.extname(filepath1);
+  const ext2 = path.extname(filepath2);
+
+  const parsedData1 = parse(data1, ext1);
+  const parsedData2 = parse(data2, ext2);
+
+  const diff = getDiff(parsedData1, parsedData2);
   const format = getFormatter(formatType);
   return format(diff);
 };

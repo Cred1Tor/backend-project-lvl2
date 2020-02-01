@@ -2,7 +2,7 @@
   {
     "key": "common",
     "status": "nestedDiff",
-    "value": [
+    "children": [
       {
         "key": "setting1",
         "status": "unchanged",
@@ -24,7 +24,7 @@
       {
         "key": "setting6",
         "status": "nestedDiff",
-        "value": [
+        "children": [
           {
             "key": "key",
             "status": "unchanged",
@@ -59,7 +59,7 @@
   {
     "key": "group1",
     "status": "nestedDiff",
-    "value": [
+    "children": [
       {
         "key": "baz",
         "status": "updated",

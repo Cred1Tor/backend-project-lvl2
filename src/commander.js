@@ -11,6 +11,7 @@ program.version(version)
       console.log(genDiff(first, second, program.format));
     } catch (e) {
       console.log(e.message);
+      process.exitCode = 1;
     }
   });
 

@@ -11,7 +11,7 @@ const stringifyDiff = (diff, path = '') => {
       case 'updated':
         return `Property '${pathToKey}' was updated. From ${stringifyValue(oldValue)} to ${stringifyValue(newValue)}`;
       case 'unchanged':
-        return '';
+        return null;
       case 'added':
         return `Property '${pathToKey}' was added with value: ${stringifyValue(value)}`;
       case 'removed':

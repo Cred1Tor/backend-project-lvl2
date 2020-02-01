@@ -21,7 +21,7 @@ const stringifyValue = (data, depthLevel) => {
 
   const indent = makeIndent(depthLevel);
   const lines = Object.entries(data)
-    .reduce((acc, [key, value]) => [...acc, `${indent.normal}${key}: ${value}`], []);
+    .map(([key, value]) => `${indent.normal}${key}: ${value}`);
 
   return `{\n${lines.join('\n')}\n${indent.higher}}`;
 };

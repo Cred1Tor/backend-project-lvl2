@@ -1,5 +1,5 @@
 import fs from 'fs';
-import genDiff from '../src';
+import genDiff from '../src/lib';
 
 const getFullPath = (fileName) => `${__dirname}/../__fixtures__/${fileName}`;
 
@@ -17,7 +17,7 @@ describe.each([
   ])('%s', (_testName, beforeFileName, afterFileName) => {
     const beforePath = getFullPath(beforeFileName);
     const afterPath = getFullPath(afterFileName);
-    const diff = genDiff(beforePath, afterPath, format);
+    const diff = genDiff.compareFiles(beforePath, afterPath, format);
     expect(diff).toEqual(expected);
   });
 });

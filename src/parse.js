@@ -14,19 +14,19 @@ const convertStringValuesToNumbers = (data) => {
   }, {});
 };
 
-const extensionsMapping = {
-  '.json': JSON.parse,
-  '.yml': yaml.safeLoad,
-  '.ini': (text) => convertStringValuesToNumbers(ini.parse(text)),
+const parsingTypesMapping = {
+  json: JSON.parse,
+  yaml: yaml.safeLoad,
+  ini: (text) => convertStringValuesToNumbers(ini.parse(text)),
 };
 
-const supportedExtensions = Object.keys(extensionsMapping);
+const supportedTypes = Object.keys(parsingTypesMapping);
 
-export default (text, extension) => {
-  if (!supportedExtensions.includes(extension)) {
-    throw new Error(`'${extension}' is unsupported file extension. Supported extensions are: ${supportedExtensions.join(', ')}.`);
+export default (text, type) => {
+  if (!supportedTypes.includes(type)) {
+    throw new Error(`'${type}' is unsupported parsing type. Supported types are: ${supportedTypes.join(', ')}.`);
   }
 
-  const parse = extensionsMapping[extension];
+  const parse = parsingTypesMapping[type];
   return parse(text);
 };

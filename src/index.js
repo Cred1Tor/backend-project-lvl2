@@ -79,8 +79,9 @@ export const compareFiles = (filepath1, filepath2, formatType = 'tree') => {
   const ext2 = path.extname(filepath2);
 
   if (!supportedExtensions.includes(ext1) || !supportedExtensions.includes(ext2)) {
-    const badExt = !supportedExtensions.includes(ext1) ? ext1 : ext2;
-    throw new Error(`'${badExt}' is unsupported file extension. Supported extensions are: ${supportedExtensions.join(', ')}.`);
+    const badFilepath = !supportedExtensions.includes(ext1) ? filepath1 : filepath2;
+    const { base } = path.parse(badFilepath);
+    throw new Error(`'${base}' has unsupported file extension. Supported extensions are: ${supportedExtensions.join(', ')}.`);
   }
 
   const data1Type = extMapping[ext1];

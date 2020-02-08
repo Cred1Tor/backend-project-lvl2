@@ -21,3 +21,10 @@ describe.each([
     expect(diff).toEqual(expected);
   });
 });
+
+test('err', () => {
+  const beforePath = getFullPath('before.json');
+  const afterPath = getFullPath('bad.ext');
+  const shouldFail = () => genDiff.compareFiles(beforePath, afterPath);
+  expect(shouldFail).toThrow('\'bad.ext\' has unsupported file extension');
+});

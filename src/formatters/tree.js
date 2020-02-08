@@ -26,32 +26,35 @@ const stringifyValue = (data, depthLevel) => {
   return `{\n${lines.join('\n')}\n${indent.higher}}`;
 };
 
-const stringifyDiff = (diff, depthLevel = 1) => {
-  const lowerLevel = depthLevel + 1;
-  const indent = makeIndent(depthLevel);
+const stringifyDiff = (diff) => {
+  const iter = (currentDiff, depthLevel) => {
+    const lowerLevel = depthLevel + 1;
+    const indent = makeIndent(depthLevel);
 
-  const renderNode = ({
-    key, status, value, oldValue, newValue, children,
-  }) => {
-    switch (status) {
-      case 'updated':
-        return `${indent.minus}${key}: ${stringifyValue(oldValue, lowerLevel)}\n${indent.plus}${key}: ${stringifyValue(newValue, lowerLevel)}`;
-      case 'added':
-        return `${indent.plus}${key}: ${stringifyValue(value, lowerLevel)}`;
-      case 'removed':
-        return `${indent.minus}${key}: ${stringifyValue(value, lowerLevel)}`;
-      case 'unchanged':
-        return `${indent.normal}${key}: ${stringifyValue(value, lowerLevel)}`;
-      case 'nestedDiff':
-        return `${indent.normal}${key}: ${stringifyDiff(children, lowerLevel)}`;
-      default:
-        throw new Error(`Unknown diff node status: ${status}`);
-    }
+    const renderNode = ({
+      key, status, value, oldValue, newValue, children,
+    }) => {
+      switch (status) {
+        case 'updated':
+          return `${indent.minus}${key}: ${stringifyValue(oldValue, lowerLevel)}\n${indent.plus}${key}: ${stringifyValue(newValue, lowerLevel)}`;
+        case 'added':
+          return `${indent.plus}${key}: ${stringifyValue(value, lowerLevel)}`;
+        case 'removed':
+          return `${indent.minus}${key}: ${stringifyValue(value, lowerLevel)}`;
+        case 'unchanged':
+          return `${indent.normal}${key}: ${stringifyValue(value, lowerLevel)}`;
+        case 'nestedDiff':
+          return `${indent.normal}${key}: ${iter(children, lowerLevel)}`;
+        default:
+          throw new Error(`Unknown diff node status: ${status}`);
+      }
+    };
+
+    const lines = currentDiff.map(renderNode);
+    return `{\n${lines.join('\n')}\n${indent.higher}}`;
   };
 
-  const lines = diff.map(renderNode);
-
-  return `{\n${lines.join('\n')}\n${indent.higher}}`;
+  return iter(diff, 1);
 };
 
 export default stringifyDiff;

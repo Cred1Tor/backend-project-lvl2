@@ -64,28 +64,18 @@ export const compareData = (data1, data2, data1Type = 'json', data2Type = 'json'
 };
 
 const extMapping = {
-  '.json': 'json',
-  '.yml': 'yaml',
-  '.ini': 'ini',
+  yml: 'yaml',
 };
-
-const supportedExtensions = Object.keys(extMapping);
 
 export const compareFiles = (filepath1, filepath2, formatType = 'tree') => {
   const data1 = fs.readFileSync(filepath1, 'utf-8');
   const data2 = fs.readFileSync(filepath2, 'utf-8');
 
-  const ext1 = path.extname(filepath1);
-  const ext2 = path.extname(filepath2);
+  const ext1 = path.extname(filepath1).slice(1);
+  const ext2 = path.extname(filepath2).slice(1);
 
-  if (!supportedExtensions.includes(ext1) || !supportedExtensions.includes(ext2)) {
-    const badFilepath = !supportedExtensions.includes(ext1) ? filepath1 : filepath2;
-    const { base } = path.parse(badFilepath);
-    throw new Error(`'${base}' has unsupported file extension. Supported extensions are: ${supportedExtensions.join(', ')}.`);
-  }
-
-  const data1Type = extMapping[ext1];
-  const data2Type = extMapping[ext2];
+  const data1Type = _.get(extMapping, ext1, ext1);
+  const data2Type = _.get(extMapping, ext2, ext2);
 
   return compareData(data1, data2, data1Type, data2Type, formatType);
 };

@@ -26,5 +26,5 @@ test('err', () => {
   const beforePath = getFullPath('before.json');
   const afterPath = getFullPath('bad.ext');
   const shouldFail = () => compareFiles(beforePath, afterPath);
-  expect(shouldFail).toThrow('\'bad.ext\' has unsupported file extension');
+  expect(shouldFail).toThrow('\'ext\' is unsupported parsing type');
 });

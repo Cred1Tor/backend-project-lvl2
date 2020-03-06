@@ -54,20 +54,11 @@ const getDiff = (data1, data2) => {
   return diffs;
 };
 
-export const compareData = (data1, data2, data1Type = 'json', data2Type = 'json', formatType = 'tree') => {
-  const parsedData1 = parse(data1, data1Type);
-  const parsedData2 = parse(data2, data2Type);
-
-  const diff = getDiff(parsedData1, parsedData2);
-  const format = getFormatter(formatType);
-  return format(diff);
-};
-
 const extMapping = {
   yml: 'yaml',
 };
 
-export const compareFiles = (filepath1, filepath2, formatType = 'tree') => {
+export default (filepath1, filepath2, formatType = 'tree') => {
   const data1 = fs.readFileSync(filepath1, 'utf-8');
   const data2 = fs.readFileSync(filepath2, 'utf-8');
 
@@ -77,5 +68,10 @@ export const compareFiles = (filepath1, filepath2, formatType = 'tree') => {
   const data1Type = _.get(extMapping, ext1, ext1);
   const data2Type = _.get(extMapping, ext2, ext2);
 
-  return compareData(data1, data2, data1Type, data2Type, formatType);
+  const parsedData1 = parse(data1, data1Type);
+  const parsedData2 = parse(data2, data2Type);
+
+  const diff = getDiff(parsedData1, parsedData2);
+  const format = getFormatter(formatType);
+  return format(diff);
 };

@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { compareFiles } from '../src';
+import genDiff from '../src';
 
 const getFullPath = (fileName) => `${__dirname}/../__fixtures__/${fileName}`;
 
@@ -17,7 +17,7 @@ describe.each([
   ])('%s', (_testName, beforeFileName, afterFileName) => {
     const beforePath = getFullPath(beforeFileName);
     const afterPath = getFullPath(afterFileName);
-    const diff = compareFiles(beforePath, afterPath, format);
+    const diff = genDiff(beforePath, afterPath, format);
     expect(diff).toEqual(expected);
   });
 });
@@ -25,6 +25,6 @@ describe.each([
 test('err', () => {
   const beforePath = getFullPath('before.json');
   const afterPath = getFullPath('bad.ext');
-  const shouldFail = () => compareFiles(beforePath, afterPath);
+  const shouldFail = () => genDiff(beforePath, afterPath);
   expect(shouldFail).toThrow('\'ext\' is unsupported parsing type');
 });

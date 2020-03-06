@@ -10,7 +10,7 @@
     "project",
     "javascript"
   ],
-  "main": "dist/lib.js",
+  "main": "dist/index.js",
   "bin": {
     "gendiff": "dist/bin/gendiff.js"
   },

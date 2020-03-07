@@ -1,5 +1,5 @@
 import program from 'commander';
-import { compareFiles } from '.';
+import genDiff from '.';
 import { version } from '../package.json';
 
 program.version(version)
@@ -8,7 +8,7 @@ program.version(version)
   .arguments('<firstConfig> <secondConfig>')
   .action((filepath1, filepath2) => {
     try {
-      console.log(compareFiles(filepath1, filepath2, program.format));
+      console.log(genDiff(filepath1, filepath2, program.format));
     } catch (e) {
       console.log(e.message);
       process.exitCode = 1;
